@@ -1,36 +1,24 @@
-// fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
-//     .then((res)=>{
-//         return res.json();
-//     }).then((data)=>{
-//         let pokemonList = data.results;
-
-//         // console.log(pokemonList);
-//         // .sort((a,b)=>{
-//         //     return a.name > b.name ? 1 : -1;
-//         // });
-//         for(let pokemon of pokemonList){
-//             // let select = document.querySelector("select");
-
-//             // let newOption = document.createElement("option");
-//             // newOption.textContent = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-//             // newOption.value = pokemon.name;
-
-//             // select.append(newOption);
-
-//             /////////////////// Option
-//             let newOption = document.createElement("option");
-//             newOption.textContent = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-//             newOption.value = pokemon.name;
-//             /////////////////// Option
-
-//             let select = document.querySelector("select");
-//             select.append(newOption);
-//         }
-//     }).catch((err)=>{
-//         console.log(err);
-//     });
-
-//     // a[target="_blank"]
+fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+    .then((res)=>{
+        return res.json();
+    }).then((data)=>{
+        let pokemonList = data.results;
+        for(let pokemon of pokemonList){
+            /* Destructuring - extracted name from object, instead of using `pokemon.name` can just use `name` */
+            let { name } = pokemon;
+            let select = document.querySelector("#pokemon-selector select");
+            
+            /////////////////// Option
+            let newOption = document.createElement("option");
+            newOption.textContent = name[0].toUpperCase() + name.slice(1);
+            newOption.value = name;
+            /////////////////// Option
+            
+            select.append(newOption);
+        }
+    }).catch((err)=>{
+        console.log(err);
+    });
 
 //     let form = document.querySelector("form");
 
