@@ -101,6 +101,24 @@ ul#team-list img {
     grid-area: versions;
 }
 
+#versions-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+}
+
+#versions-list > * {
+    border: 1px solid black;
+}
+
+#versions-list img {
+    width: 75px;
+}
+
+.versions-list-items {
+    text-align: center;
+}
+
 #recent {
     grid-area: recent;
 }
