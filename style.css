@@ -3,7 +3,11 @@
     font-weight: 600;
 }
 
-#main{
+
+/* want to select every child that's a single level down. The carrot `>` grabs the direct descendants of `main` */
+/* grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 100px 100px; */
+#main {
     display: grid;
     grid-template-areas: 
     "header header header"
@@ -17,28 +21,31 @@
     margin: 0 auto;
 }
 
+/* see where these boxes are */
 #main > *{
     border: 1px solid black;
-    padding: 10px 20px;
+    /* up/down, left/right */
+    padding: 5px 10px;
 }
 
-#header{
+#header {
     grid-area: header;
 }
 
-#pokemon-selector{
+#pokemon-selector {
     grid-area: selector;
 }
 
-#details > *{
+#details > * {
     border: 1px solid black;
     padding: 5px 10px;
 }
 
-#details{
+#details {
     grid-area: details;
+    /* set this up as a grid */
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "details-title details-title"
     "details-img details-text"
     "details-sub-text details-sub-text"
@@ -46,35 +53,36 @@
     grid-gap: 5px;
 }
 
-#details-title{
+#details-title {
     grid-area: details-title;
 }
 
-#details-img-container img{
+#details-img-container img {
     grid-area: details-img;
-    width:100px;
+    width: 100px;
 }
 
-#details-text{
+#details-text {
     grid-area: details-text;
 }
 
-#details-sub-text{
+#details-sub-text {
     grid-area: details-sub-text;
 }
 
-#details-action{
+#details-action {
     grid-area: details-action;
 }
 
-#team{
+
+#team {
     grid-area: team;
 }
 
-#evolution{
+#evolution {
     grid-area: evolution;
 }
 
-#recent{
+#recent {
     grid-area: recent;
 }
