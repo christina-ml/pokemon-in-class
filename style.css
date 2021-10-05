@@ -79,6 +79,24 @@ grid-template-rows: 100px 100px; */
     grid-area: team;
 }
 
+
+ul#team-list {
+    list-style-type: none;
+    padding: 0px;
+}
+
+ul#team-list li {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+ul#team-list img {
+    border-radius: 50%; /* circular */
+    width: 50px;
+}
+
 #evolution {
     grid-area: evolution;
 }
