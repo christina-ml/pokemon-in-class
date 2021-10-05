@@ -101,21 +101,26 @@ ul#team-list img {
     grid-area: versions;
 }
 
-#versions-list {
+/* Apply styling to both `versions` & `recent` */
+#versions-list,
+#recent-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5px;
 }
 
-#versions-list > * {
+#versions-list > *,
+#recent-list > * {
     border: 1px solid black;
 }
 
-#versions-list img {
+#versions-list img,
+#recent-list img {
     width: 75px;
 }
 
-.versions-list-items {
+.versions-list-items,
+.recent-list-items {
     text-align: center;
 }
 
