@@ -22,7 +22,7 @@ grid-template-rows: 100px 100px; */
 }
 
 /* see where these boxes are */
-#main > *{
+#main > * {
     border: 1px solid black;
     /* up/down, left/right */
     padding: 5px 10px;
