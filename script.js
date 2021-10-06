@@ -84,6 +84,28 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
                         <!-- button that's not in a form -->
                         <button>Add -></button>
                     </div>`
+
+                    let recentList = document.querySelector("#recent-list");
+                    // <div class="recent-list-items">
+                    //     <img src="https://static.pokemonpets.com/images/monsters-images-800-800/147-Dratini.webp" alt="Evolution version image" />
+                    //     <div>Dratini</div>
+                    // </div>
+
+                    let recentListItem = document.createElement("div");
+                    recentListItem.classList.add("recent-list-item");
+
+                    let recentListImg = document.createElement("img");
+                    recentListImg.src = data.sprites.front_default;
+                    recentListImg.alt = "evolution version image";
+                    
+                    let nameDiv = document.createElement("div");
+                    nameDiv.textContent = data.name;
+
+                    recentListItem.append(recentListImg, nameDiv);
+
+                    recentList.append(recentListItem);
+
+
                     // let currentPokemonEl = document.querySelector("#current-pokemon");
 
                     // let img = document.createElement("img");
