@@ -48,9 +48,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
                         }
                     }
 
-                    console.log(hp); // HP
-                    console.log(atk); // Atk
-                    console.log(def); // Def
+                    // console.log(hp); // HP
+                    // console.log(atk); // Atk
+                    // console.log(def); // Def
 
                     let details = document.querySelector("#details");
 
@@ -79,11 +79,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
                         <div>Hit Points: ${hp}</div>
                         <div>Attack: ${atk}</div>
                         <div>Defense: ${def}</div>  
-                    </div>
-                    <div id="details-action">
-                        <!-- button that's not in a form -->
-                        <button>Add -></button>
                     </div>`
+                    // <div id="details-action">
+                    //     <!-- button that's not in a form -->
+                    //     <button>Add -></button>
+                    // </div>`
 
                     let recentList = document.querySelector("#recent-list");
                     // <div class="recent-list-items">
@@ -119,3 +119,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
 
         // console.log(selectedPokemon);
     });
+
+
+/* START - Add to team button */
+let addToTeamButton = document.querySelector("#add-to-team");
+
+addToTeamButton.addEventListener("click", ()=>{
+    let currentPokemonName = document.querySelector("#details-name").textContent;
+    console.log(currentPokemonName);
+    // let currentPokemonImg;
+})
+/* END - Add to team button */
