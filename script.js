@@ -71,8 +71,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
                     <div id="details-text">
                         <div id="details-name">Name: ${data.name}</div>
                         <div id="details-species">Species: ${typeStr}</div>
-                        <div id="details-weight">Weight: ${data.weight}lbs.</div>
-                        <div id="details-height">Height: ${data.height}ft.</div>
+                        <div id="details-weight">Weight: ${data.weight} hectograms</div>
+                        <div id="details-height">Height: ${data.height} decimeters</div>
                     </div>
                     <div id="details-sub-text">
                         <h3>Base Attributes</h3>
