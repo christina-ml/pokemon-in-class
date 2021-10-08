@@ -144,6 +144,11 @@ ul#team-list img {
     text-align: center;
 }
 
+.recent-list-item {
+    cursor: pointer;
+}
+
 #recent {
     grid-area: recent;
 }
+
