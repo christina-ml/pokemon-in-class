@@ -60,16 +60,20 @@ grid-template-rows: 100px 100px; */
 
 #details-img-container {
     text-align: center;
-    width: 150px; /* width of container */
-    height: 150px; /* height of container */
-    overflow: hidden; /* hides image that goes beyond container*/
+
+    /* text-align: center;
+    width: 150px; width of container
+    height: 150px; height of container
+    overflow: hidden; hides image that goes beyond container */
 }
 
 #details-img-container img {
     grid-area: details-img;
-    width: 200px; /* image size */
+    width: 150px;
+/* 
+    width: 200px; image size
     object-fit: cover;
-    margin: -25px -180px 0px -180px;
+    margin: -25px -180px 0px -180px; */
 }
 
 #details-text {
@@ -136,7 +140,7 @@ ul#team-list img {
 }
 
 .versions-list-items,
-.recent-list-items {
+.recent-list-item {
     text-align: center;
 }
 
