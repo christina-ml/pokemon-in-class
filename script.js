@@ -1,15 +1,6 @@
-/* Capitalize the first letter of Pokemon's name */
 function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
-
-// Options:
-// .map() with capitalize 
-
-// function capitalizeArr(arr){
-    
-//     return str[0].toUpperCase() + str.slice(1).toLowerCase();
-// }
 
 function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
@@ -37,7 +28,7 @@ function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 let details = document.querySelector("#details");
 
                 let typeStr = data.types.map((typeEl)=>{
-                    return capitalize(typeEl.type.name); /* This will capitalize every type - Example: has 2 types Grass/Poison */
+                    return capitalize(typeEl.type.name);
                 }).join("/");
 
                 details.innerHTML = `<div id="details-title">
@@ -74,7 +65,7 @@ function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                         recentListImg.alt = "Evolution version image";
     
                         let nameDiv = document.createElement("div");
-                        nameDiv.textContent = capitalize(data.name); /* use our helper function */
+                        nameDiv.textContent = capitalize(data.name);
     
                         nameDiv.addEventListener("click", (event)=>{
                             fetchPokemonDetails(event.target.textContent, false);
@@ -124,12 +115,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
         e.preventDefault();
         let selectedPokemon = e.target["pokemon-select"].value;
 
-        let recentPoke = document.querySelectorAll(".recent-list-item");
+        let recent = document.querySelectorAll(".recent-list-item");
 
-        /* loop through nodelist of recent pokemon to find "weedle", for example.
-        If there's one already there, stop.*/
-        for (let element of recentPoke){
-            if (element.textContent.toLowerCase() === selectedPokemon.toLowerCase()){
+        for(let element of recent){
+            if(element.textContent.toLowerCase() === selectedPokemon.toLowerCase()){
                 return;
             }
         }
@@ -195,6 +184,7 @@ addToTeamButton.addEventListener("click", ()=>{
 
 let clearTeamButton = document.querySelector("#clear-team button");
 
+// An event listener that clears stats of team
 clearTeamButton.addEventListener("click", ()=>{
     let teamHp = document.querySelector("#team-stats-hp");
     let teamAtk = document.querySelector("#team-stats-atk");
