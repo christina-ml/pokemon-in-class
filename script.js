@@ -2,14 +2,21 @@ function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-function fetchPokemonDetails(pokemonName, shouldAddToRecent){
+async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
     let errMessage = document.querySelector("#error-message");
     if( pokemonName !== "default" ){
         errMessage.textContent = "";
-        fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase())
-            .then((res)=>res.json())
-            .then((data)=>{
+        // fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase())
+        //     .then((res)=>res.json())
+        //     .then((data)=>{
+
+
+        let res = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase());
+        let data = await res.json();
+
+
+
                 console.log(data);
                 let hp;
                 let atk;
