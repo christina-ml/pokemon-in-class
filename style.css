@@ -3,11 +3,7 @@
     font-weight: 600;
 }
 
-
-/* want to select every child that's a single level down. The carrot `>` grabs the direct descendants of `main` */
-/* grid-template-columns: repeat(3, 1fr);
-grid-template-rows: 100px 100px; */
-#main {
+#main{
     display: grid;
     grid-template-areas: 
     "header header header"
@@ -21,32 +17,29 @@ grid-template-rows: 100px 100px; */
     margin: 0 auto;
 }
 
-/* see where these boxes are */
-#main > * {
+#main > *{
     border: 1px solid black;
-    /* up/down, left/right */
-    padding: 5px 10px;
+    padding: 10px 20px;
 }
 
-#header {
+#header{
     grid-area: header;
     text-align: center;
 }
 
-#pokemon-selector {
+#pokemon-selector{
     grid-area: selector;
 }
 
-#details > * {
+#details > *{
     border: 1px solid black;
     padding: 5px 10px;
 }
 
-#details {
+#details{
     grid-area: details;
-    /* set this up as a grid */
     display: grid;
-    grid-template-areas:
+    grid-template-areas: 
     "details-title details-title"
     "details-img details-text"
     "details-sub-text details-sub-text"
@@ -54,28 +47,10 @@ grid-template-rows: 100px 100px; */
     grid-gap: 5px;
 }
 
-#details-title {
+#details-title{
     grid-area: details-title;
 }
 
-<<<<<<< HEAD
-#details-img-container {
-    text-align: center;
-
-    /* text-align: center;
-    width: 150px; width of container
-    height: 150px; height of container
-    overflow: hidden; hides image that goes beyond container */
-}
-
-#details-img-container img {
-    grid-area: details-img;
-    width: 150px;
-/* 
-    width: 200px; image size
-    object-fit: cover;
-    margin: -25px -180px 0px -180px; */
-=======
 #details-img-container{
     text-align: center;
 }
@@ -83,10 +58,9 @@ grid-template-rows: 100px 100px; */
 #details-img-container img{
     grid-area: details-img;
     width:150px;
->>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
 }
 
-#details-text {
+#details-text{
     grid-area: details-text;
 }
 
@@ -96,81 +70,28 @@ grid-template-rows: 100px 100px; */
     margin: 5px;
 }
 
-<<<<<<< HEAD
-#details-sub-text {
-=======
 #details-sub-text{
->>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
     grid-area: details-sub-text;
 }
 
-#details-action {
+#details-action{
     grid-area: details-action;
 }
 
-
-#team {
+#team{
     grid-area: team;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
 ul#team-list{
     list-style-type: none;
     padding:0;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
 ul#team-list li{
     margin: 5px;
     border: 1px solid black;
     display: flex;
     align-items: center;
 }
-<<<<<<< HEAD
-
-ul#team-list img {
-    border-radius: 50%; /* circular */
-    width: 50px;
-}
-
-#versions {
-    grid-area: versions;
-}
-
-/* Apply styling to both `versions` & `recent` */
-#versions-list,
-#recent-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
-}
-
-#versions-list > *,
-#recent-list > * {
-    border: 1px solid black;
-}
-
-#versions-list img,
-#recent-list img {
-    width: 75px;
-}
-
-.versions-list-items,
-.recent-list-item {
-    text-align: center;
-}
-
-.recent-list-item {
-    cursor: pointer;
-}
-
-#recent {
-=======
 ul#team-list img{
     border-radius: 50%;
     width:50px;
@@ -204,7 +125,5 @@ ul#team-list img{
 
 
 #recent{
->>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
     grid-area: recent;
 }
-

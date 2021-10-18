@@ -98,6 +98,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
             newOption.textContent = name[0].toUpperCase() + name.slice(1);
             newOption.value = name;
             /////////////////// Option
+
             select.append(newOption);
         }
     }).catch((err)=>{
