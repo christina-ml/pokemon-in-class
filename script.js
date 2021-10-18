@@ -110,10 +110,18 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
     form.addEventListener("submit", (e)=>{
         e.preventDefault();
         let selectedPokemon = e.target["pokemon-select"].value;
-//         // console.log("https://pokeapi.co/api/v2/pokemon/" + selectedPokemon)
-        fetchPokemonDetails(selectedPokemon, true);
 
-//         // console.log(selectedPokemon);
+        let recentPoke = document.querySelectorAll(".recent-list-item");
+
+        /* loop through nodelist of recent pokemon to find "weedle", for example.
+        If there's one already there, stop.*/
+        for (let element of recentPoke){
+            if (element.textContent === selectedPokemon){
+                return;
+            }
+        }
+
+        fetchPokemonDetails(selectedPokemon, true);
     });
 
 let addToTeamButton = document.querySelector("#add-to-team button");
