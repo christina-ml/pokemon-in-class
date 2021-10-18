@@ -17,9 +17,6 @@
             <div id="error-message"></div>
             <select id="pokemon-select" name="pokemon-select">
                 <option value="default">--Choose your Pokemon--</option>
-                <option value="pikachu">Pikachu</option>
-                <option value="squirtle">Squirtle</option>
-                <option value="charmander">Charmander</option>
             </select>
             <input type="submit" value="Go" />
         </form>
@@ -27,6 +24,7 @@
             <div>No Pokemon Selected</div>
         </div>
         <div id="team">
+<<<<<<< HEAD
             <!-- add button above team -->
             <div id="add-to-team">
                 <!-- button that's not in a form -->
@@ -65,7 +63,37 @@
             <h3>Recent</h3>
             <!-- copy same format from `versions-list` -->
             <div id="recent-list">
+=======
+            <span id="add-to-team">
+                <button>Add To Team</button>
+            </span>
+            <span id="clear-team">
+                <button>Clear Team</button>
+            </span>
+            <h3>Team</h3>
+            <ul id="team-list">
+                <li id="team-list-placeholder">No pokémon currently in team</li>
+            </ul>
+            <div id="team-stats">
+                <h4>Team Statistics</h4>
+                <div>Health Points: <span id="team-stats-hp">0</span></div>
+                <div>Attack: <span id="team-stats-atk">0</span></div>
+                <div>Defense: <span id="team-stats-def">0</span></div>    
             </div>
+        </div>
+        <!-- <div id="versions">
+            <h3>Versions</h3>
+            <div id="versions-list">
+                <div class="versions-list-item">
+                    <img src="https://static.pokemonpets.com/images/monsters-images-800-800/26-Raichu.webp" alt="Evolution version image" />
+                    <div>Raichu</div>
+                </div>
+>>>>>>> a94f02f3f316ddec5902410f0a0ce9222b3fa263
+            </div>
+        </div> -->
+        <div id="recent">
+            <h3>Recent</h3>
+            <div id="recent-list"></div>
         </div>
     </div>
     <div id="current-pokemon"></div>
