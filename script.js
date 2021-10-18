@@ -7,7 +7,7 @@ function fetchPokemonDetails(pokemonName, shouldAddToRecent){
     let errMessage = document.querySelector("#error-message");
     if( pokemonName !== "default" ){
         errMessage.textContent = "";
-        fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonName)
+        fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase())
             .then((res)=>res.json())
             .then((data)=>{
                 console.log(data);
@@ -40,8 +40,8 @@ function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                     <div id="details-text">
                         <div>Name: <span id="details-name">${capitalize(data.name)}</span></div>
                         <div>Type: <span id="details-type">${typeStr}</span></div>
-                        <div>Weight: <span id="details-weight">${data.weight}</span> hectograms</div>
-                        <div>Height: <span id="details-height">${data.height}</span> decimeters</div>
+                        <div>Weight: <span id="details-weight">${Math.round(Number(data.weight)/4.536)}</span> lbs</div>
+                        <div>Height: <span id="details-height">${Math.round(Number(data.height)/3.048)}</span> ft</div>
                     </div>
                     <div id="details-sub-text">
                         <h3>Base Attributes</h3>
@@ -68,6 +68,7 @@ function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                         nameDiv.textContent = capitalize(data.name);
     
                         nameDiv.addEventListener("click", (event)=>{
+                            console.log("Trigger");
                             fetchPokemonDetails(event.target.textContent, false);
                         });
     
