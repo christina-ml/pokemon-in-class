@@ -99,6 +99,15 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 // console.log(chain.species.name);
             }
             console.log(evolutionChain);
+            let evolutionsList = document.querySelector("#evolutions-list");
+            for(let i = 0; i < evolutionChain.length; i++){
+                let div = document.createElement("div");
+                div.classList = "evolutions-list-item";
+                div.innerHTML = (
+                    `<img src=${} alt="Evolution version image" />
+                    <div>${}</div>`
+                )
+            }
 
             // console.log(evolutionsData.chain.species.name); /* First Evolution */
             // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
