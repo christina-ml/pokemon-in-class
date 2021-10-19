@@ -78,7 +78,25 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
             } catch(err){
                 console.log(err);
             }
-            console.log(evolutionsData);
+            
+            // console.log(evolutionData);
+            let evolutionChain = [evolutionsData.chain.species.name];
+            let chain = evolutionsData.chain;
+            
+            /* Recursion - need a place where it will quit this infinite loop */
+            while(true){
+                if (chain.evolves_to.length < 1) {
+                    break;
+                }
+                chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
+                evolutionChain.push(chain.species.name);
+                console.log(chain.species.name);
+            }
+            console.log(evolutionChain);
+
+            // console.log(evolutionsData.chain.species.name); /* First Evolution */
+            // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
+            // console.log(evolutionsData.chain.evolves_to[0].evolves_to[0].species.name); /* Third Evolution */
 
             // Evolutions
 
