@@ -90,7 +90,13 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 }
                 chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
                 evolutionChain.push(chain.species.name);
-                console.log(chain.species.name);
+
+                // for(let i = 0; i < chain.evolves_to.length; i++){
+                //     chain = chain.evolves_to[i];
+                //     evolutionChain.push(chain.species.name);
+                // }
+                
+                // console.log(chain.species.name);
             }
             console.log(evolutionChain);
 
@@ -128,7 +134,7 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
     }
 }
 
-fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=133")
     .then((res)=>{
         return res.json();
     }).then((data)=>{
