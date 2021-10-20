@@ -149,7 +149,7 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
     }
 }
 
-fetch("https://pokeapi.co/api/v2/pokemon?limit=133")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
     .then((res)=>{
         return res.json();
     }).then((data)=>{
@@ -259,3 +259,41 @@ clearTeamButton.addEventListener("click", ()=>{
         member.remove();
     }
 });
+
+
+/* Event listener that triggers every time you type in selector */
+let filterSelect = document.querySelector("#filter-select");
+filterSelect.addEventListener("input", (e)=>{
+    /* When selecting a pokemon, you want the others gone. So we want to delete the children of `pokemonSelect` */
+    /* Store a value first, then erase it. Go through each option, erase all of them, and append only the ones that you want/that are true. */
+    // console.log(e.target.value);
+    let pokemonSelect = document.querySelector("#pokemon-select");
+
+    /* create an empty array to store them */
+    let filteredArr = [];
+    /* go through every option, one at a time */
+    for (let option of pokemonSelect.options){
+        console.log(option);
+        if (option.value[0] === "a"){
+            filteredArr.push(option);
+        }
+    }
+
+    
+    /* Remove children like we did before, to erase it */
+    while (pokemonSelect.firstChild) {
+        pokemonSelect.removeChild(pokemonSelect.firstChild);
+    }
+    
+    /* Add the ones back in that we want */
+    for (let option of filteredArr){
+        pokemonSelect.append(option);
+    }
+    console.log(filteredArr);
+
+    // /* return a boolean - it will only return values that are true */
+    // let filteredPokemon = [...pokemonSelect.options].filter((option)=>{
+    //     return option.value[0] === "a";
+    // })
+    // console.log(filteredPokemon);
+})
