@@ -279,7 +279,6 @@ filterSelect.addEventListener("input", (e)=>{
         }
     }
 
-    
     /* Remove children like we did before, to erase it */
     while (pokemonSelect.firstChild) {
         pokemonSelect.removeChild(pokemonSelect.firstChild);
