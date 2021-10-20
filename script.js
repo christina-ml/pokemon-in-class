@@ -289,10 +289,4 @@ filterSelect.addEventListener("input", (e)=>{
         pokemonSelect.append(option);
     }
     console.log(filteredArr);
-
-    // /* return a boolean - it will only return values that are true */
-    // let filteredPokemon = [...pokemonSelect.options].filter((option)=>{
-    //     return option.value[0] === "a";
-    // })
-    // console.log(filteredPokemon);
 })
