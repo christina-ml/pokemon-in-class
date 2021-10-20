@@ -2,6 +2,46 @@ function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
+let allPokemonOptions = [];
+
+fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+    .then((res)=>{
+        return res.json();
+    }).then((data)=>{
+        let pokemonList = data.results;
+        for(let pokemon of pokemonList){
+            let { name } = pokemon;
+            let select = document.querySelector("#pokemon-selector select");
+            
+            /////////////////// Option
+            let newOption = document.createElement("option");
+            newOption.textContent = name[0].toUpperCase() + name.slice(1);
+            newOption.value = name;
+            /////////////////// Option
+
+            select.append(newOption);
+        }
+    }).catch((err)=>{
+        console.log(err);
+    });
+
+    let form = document.querySelector("form#pokemon-selector");
+
+    form.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        let selectedPokemon = e.target["pokemon-select"].value;
+
+        let recent = document.querySelectorAll(".recent-list-item");
+
+        for(let element of recent){
+            if(element.textContent.toLowerCase() === selectedPokemon.toLowerCase()){
+                return;
+            }
+        }
+
+        fetchPokemonDetails(selectedPokemon, true);
+    });
+
 async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
     let errMessage = document.querySelector("#error-message");
@@ -57,12 +97,6 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
 
             // Evolutions
-
-            // <div class="evolutions-list-item">
-            //         <img src="https://static.pokemonpets.com/images/monsters-images-800-800/26-Raichu.webp" alt="Evolution version image" />
-            //         <div>Raichu</div>
-            // </div>
-
             let speciesData;
             try{
                 let speciesRes = await fetch(pokemonData.species.url);
@@ -114,13 +148,10 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
                 evolutionsList.append(div);
             }
-            
             // console.log(evolutionsData.chain.species.name); /* First Evolution */
             // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
             // console.log(evolutionsData.chain.evolves_to[0].evolves_to[0].species.name); /* Third Evolution */
-
             // Evolutions
-
             
             if(shouldAddToRecent){
                 let recentList = document.querySelector("#recent-list");
@@ -148,44 +179,6 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
         errMessage.textContent = "Please choose a Pokemon!";
     }
 }
-
-fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
-    .then((res)=>{
-        return res.json();
-    }).then((data)=>{
-        let pokemonList = data.results;
-        for(let pokemon of pokemonList){
-            let { name } = pokemon;
-            let select = document.querySelector("#pokemon-selector select");
-            
-            /////////////////// Option
-            let newOption = document.createElement("option");
-            newOption.textContent = name[0].toUpperCase() + name.slice(1);
-            newOption.value = name;
-            /////////////////// Option
-
-            select.append(newOption);
-        }
-    }).catch((err)=>{
-        console.log(err);
-    });
-
-    let form = document.querySelector("form#pokemon-selector");
-
-    form.addEventListener("submit", (e)=>{
-        e.preventDefault();
-        let selectedPokemon = e.target["pokemon-select"].value;
-
-        let recent = document.querySelectorAll(".recent-list-item");
-
-        for(let element of recent){
-            if(element.textContent.toLowerCase() === selectedPokemon.toLowerCase()){
-                return;
-            }
-        }
-
-        fetchPokemonDetails(selectedPokemon, true);
-    });
 
 let addToTeamButton = document.querySelector("#add-to-team button");
 
@@ -272,7 +265,7 @@ filterSelect.addEventListener("input", (e)=>{
     /* create an empty array to store them */
     let filteredArr = [];
     /* go through every option, one at a time */
-    for (let option of pokemonSelect.options){
+    for (let option of allPokemonOptions){
         /* Do you have what I'm typing? It will look for the string values in each option every time */
         if (option.value.includes(e.target.value)){
             filteredArr.push(option);
@@ -288,5 +281,4 @@ filterSelect.addEventListener("input", (e)=>{
     for (let option of filteredArr){
         pokemonSelect.append(option);
     }
-    console.log(filteredArr);
 })
