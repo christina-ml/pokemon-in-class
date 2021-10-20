@@ -79,16 +79,23 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 console.log(err);
             }
             
-            // // console.log(evolutionData);
-            // let evolutionChain = [evolutionsData.chain.species.name];
-            // let chain = evolutionsData.chain;
-            
-
+            // console.log(evolutionsData);
+            let evolutionChain = [evolutionsData.chain.species.name];
+            let chain = evolutionsData.chain;
+            console.log(evolutionsData.chain.species.name);
             /* We want to create an array that has the 1st, 2nd, and 3rd+ stages. So create an infinite loop */
             // /* Recursion - need a place where it will quit this infinite loop */
             while (true) {
-                
+                /* While evolving, do this. Otherwise, don't. */
+                if (chain.evolves_to.length < 1) {
+                    break;
+                }
+                chain = chain.evolves_to[0];
+                evolutionChain.push(chain.species.name);
             }
+
+            console.log(evolutionChain);
+
             // while(true){
             //     if (chain.evolves_to.length < 1) {
             //         break;
@@ -115,9 +122,9 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
             // }
 
             
-            console.log(evolutionsData.chain.species.name); /* First Evolution */
-            console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
-            console.log(evolutionsData.chain.evolves_to[0].evolves_to[0].species.name); /* Third Evolution */
+            // console.log(evolutionsData.chain.species.name); /* First Evolution */
+            // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
+            // console.log(evolutionsData.chain.evolves_to[0].evolves_to[0].species.name); /* Third Evolution */
 
             // Evolutions
 
