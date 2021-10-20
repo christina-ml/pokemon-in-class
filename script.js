@@ -2,6 +2,26 @@ function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
+
+// #header h1:hover {
+//     opacity: 0.25;    
+// }
+
+let h1 = document.querySelector("#header h1");
+// h1.style.opacity = 0;
+h1.style.transform = "rotate(0deg)";
+
+h1.style.transition = "1s";
+
+setTimeout(()=>{
+    let h1 = document.querySelector("#header h1");
+
+    h1.style.transform = "rotate(360deg)";
+
+    // h1.style.opacity = 1;
+}, 1000);
+
+
 let allPokemonOptions=[];
 
 fetch("https://pokeapi.co/api/v2/pokemon?limit=2000")

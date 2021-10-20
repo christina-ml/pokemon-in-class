@@ -27,6 +27,16 @@
     text-align: center;
 }
 
+#header h1 {
+    opacity: 1;
+    transition: 1s;
+}
+
+#header h1:hover {
+    opacity: 0.25;    
+}
+
+
 #pokemon-selector{
     grid-area: selector;
 }
