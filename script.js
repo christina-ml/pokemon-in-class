@@ -82,7 +82,6 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
             // console.log(evolutionsData);
             let evolutionChain = [evolutionsData.chain.species.name];
             let chain = evolutionsData.chain;
-            console.log(evolutionsData.chain.species.name);
             /* We want to create an array that has the 1st, 2nd, and 3rd+ stages. So create an infinite loop */
             // /* Recursion - need a place where it will quit this infinite loop */
             while (true) {
@@ -92,32 +91,22 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 }
                 chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
                 evolutionChain.push(chain.species.name);
-                
-                // for (let i = 0; i < chain.evolves_to.length; i++){
-                //     chain = chain.evolves_to[i]; // Reset `chain` to the next evolution
-                //     evolutionChain.push(chain.species.name);
-                // }
             }
 
-            console.log(evolutionChain);
-
-            // let evolutionsList = document.querySelector("#evolutions-list");
-            // for(let evolvedPokemon of evolutionChain){
-            //     let div = document.createElement("div");
-            //     div.className = "evolutions-list-item";
-
-            //     /* Need to fetch the image each time inside this loop */
-            //     let evolvedPokemonRes = await fetch("https://pokeapi.co/api/v2/pokemon/" + evolvedPokemon.toLowerCase());
-            //     let evolvedPokemonData = await evolvedPokemonRes.json();
-            //     console.log(data.sprites.front_default);
-
-            //     div.innerHTML = (
-            //         `<img src=${evolvedPokemonData.sprites.front_default} alt="Evolution version image" />
-            //         <div>${evolvedPokemon}</div>`
-            //     )
-            //     evolutionsList.append(div);
-            // }
-
+            /* iterate through `evolutionChain`, and start adding items to <div id="evolutions-list"> from HTML */
+            let evolutionsList = document.querySelector("#evolutions-list");
+            for (let evolvedPokemon of evolutionChain){
+                let div = document.createElement("div");
+                div.className = "evolutions-list-item";
+                /* Need to fetch the image each time inside this loop */
+                let evolvedPokemonRes = await fetch("https://pokeapi.co/api/v2/pokemon/" + evolvedPokemon.toLowerCase())
+                let evolvedPokemonData = await evolvedPokemonRes.json();
+                div.innerHTML = (
+                    `<img src=${evolvedPokemonData.sprites.front_default} alt="Evolution version image" />
+                    <div>${evolvedPokemon}</div>`
+                )
+                evolutionsList.append(div);
+            }
             
             // console.log(evolutionsData.chain.species.name); /* First Evolution */
             // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
