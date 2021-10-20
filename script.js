@@ -273,8 +273,8 @@ filterSelect.addEventListener("input", (e)=>{
     let filteredArr = [];
     /* go through every option, one at a time */
     for (let option of pokemonSelect.options){
-        console.log(option);
-        if (option.value[0] === "a"){
+        /* Do you have what I'm typing? It will look for the string values in each option every time */
+        if (option.value.includes(e.target.value)){
             filteredArr.push(option);
         }
     }
