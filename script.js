@@ -95,6 +95,12 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
 
             /* iterate through `evolutionChain`, and start adding items to <div id="evolutions-list"> from HTML */
             let evolutionsList = document.querySelector("#evolutions-list");
+            
+            /* Replace and go through each child one at a time, and remove them. Also gets through the event listener that we add to it. */
+            while (evolutionsList.firstChild) {
+                evolutionsList.removeChild(evolutionsList.firstChild);
+            }
+
             for (let evolvedPokemon of evolutionChain){
                 let div = document.createElement("div");
                 div.className = "evolutions-list-item";
@@ -105,6 +111,7 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                     `<img src=${evolvedPokemonData.sprites.front_default} alt="Evolution version image" />
                     <div>${evolvedPokemon}</div>`
                 )
+
                 evolutionsList.append(div);
             }
             
