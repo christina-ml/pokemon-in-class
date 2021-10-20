@@ -9,16 +9,10 @@ gives an array of letters, including the space.
 Do a forEach to grab each letter. And put a span for each letter. */
 "Poké Teams".split("").forEach((letter, index)=>{
     let span = document.createElement("span");
-
-    /* There's still a space in the word */
-    if (letter === " "){
-        return;
-    }
-
     span.textContent = letter;
 
     /* Attach CSS styling to it before appending. Each element has a 1s transition */
-    span.style.transition = "0.5s";
+    span.style.transition = "1s";
     // span.style.opacity = 0;
     span.style.position = "relative";
     span.style.display = "inline-block"; // ROTATE only works on inline-blocks
@@ -33,18 +27,19 @@ Do a forEach to grab each letter. And put a span for each letter. */
         /* Adding the keyframe animation from CSS */
         span.style.animation = "moveElement 1s infinite, spinElement 1s infinite, colorElement 2s infinite";
 
-    }, 300 * index);
+    }, 100 * index);
 });
 
 
 // h1.style.opacity = 0;
 // h1.style.transform = "rotate(0deg)";
+
 // h1.style.transition = "5s";
 
-setTimeout(()=>{
-    // h1.style.transform = "rotate(360deg)";
-    // h1.style.opacity = 1;
-}, 1000);
+// setTimeout(()=>{
+//     // h1.style.transform = "rotate(360deg)";
+//     // h1.style.opacity = 1;
+// }, 1000);
 
 
 let allPokemonOptions=[];

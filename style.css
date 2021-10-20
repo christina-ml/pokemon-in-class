@@ -26,7 +26,7 @@
     grid-area: header;
     text-align: center;
 }
-
+/* 
 #header h1 {
     opacity: 1;
     transition: 1s;
@@ -34,7 +34,7 @@
 
 #header h1:hover {
     opacity: 0.25;    
-}
+} */
 
 
 #pokemon-selector{
@@ -162,11 +162,11 @@ ul#team-list img{
 - Going to make a perpetual animation
 */
 @keyframes moveElement {
-    0% {top: 0px}
-    25% {top: 50px}
-    50% {top: 0px}
-    75% {top: 0px}
-    100% {top: 0px}
+    0%  {top: 0px;}
+    25%  {top: 10px;}
+    50%  {top: 50px;}
+    75%  {top: 10px;}
+    100%  {top: 0px;}
 }
 
 @keyframes spinElement {
@@ -183,7 +183,7 @@ ul#team-list img{
 - Rotate in/out of those colors
 */
 @keyframes colorElement {
-    0% {color: rgb(255, 0, 0);}
-    50% {color: rgb(0, 0, 255);}
-    100% {color: rgb(255, 0, 0);}
+    0%  {color: rgb(255,0,0);}
+    50%  {color: rgb(0,0, 255);}
+    100%  {color: rgb(255,0,0);}
 }
