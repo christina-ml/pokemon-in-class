@@ -2,9 +2,9 @@ function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-let allPokemonOptions = [];
+let allPokemonOptions=[];
 
-fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=2000")
     .then((res)=>{
         return res.json();
     }).then((data)=>{
@@ -17,6 +17,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
             let newOption = document.createElement("option");
             newOption.textContent = name[0].toUpperCase() + name.slice(1);
             newOption.value = name;
+            allPokemonOptions.push(newOption);
             /////////////////// Option
 
             select.append(newOption);
@@ -112,46 +113,42 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
             } catch(err){
                 console.log(err);
             }
-            
-            // console.log(evolutionsData);
+
             let evolutionChain = [evolutionsData.chain.species.name];
             let chain = evolutionsData.chain;
-            /* We want to create an array that has the 1st, 2nd, and 3rd+ stages. So create an infinite loop */
-            // /* Recursion - need a place where it will quit this infinite loop */
-            while (true) {
-                /* While evolving, do this. Otherwise, don't. */
-                if (chain.evolves_to.length < 1) {
+            while(true){
+                if(chain.evolves_to.length < 1){
+                    break;
+                } else if(chain.evolves_to.length > 1){
+                    for(let evoPokemon of chain.evolves_to){
+                        evolutionChain.push(evoPokemon.species.name);
+                    }
                     break;
                 }
-                chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
+                chain = chain.evolves_to[0];
                 evolutionChain.push(chain.species.name);
             }
 
-            /* iterate through `evolutionChain`, and start adding items to <div id="evolutions-list"> from HTML */
             let evolutionsList = document.querySelector("#evolutions-list");
             
-            /* Replace and go through each child one at a time, and remove them. Also gets through the event listener that we add to it. */
             while (evolutionsList.firstChild) {
                 evolutionsList.removeChild(evolutionsList.firstChild);
             }
 
-            for (let evolvedPokemon of evolutionChain){
+            for(let evolvedPokemon of evolutionChain){
                 let div = document.createElement("div");
                 div.className = "evolutions-list-item";
-                /* Need to fetch the image each time inside this loop */
-                let evolvedPokemonRes = await fetch("https://pokeapi.co/api/v2/pokemon/" + evolvedPokemon.toLowerCase())
-                let evolvedPokemonData = await evolvedPokemonRes.json();
+                let evolvedPokemonRes = await fetch("https://pokeapi.co/api/v2/pokemon/" + evolvedPokemon.toLowerCase());
+                let evolvedPokemonData =  await evolvedPokemonRes.json();
                 div.innerHTML = (
                     `<img src=${evolvedPokemonData.sprites.front_default} alt="Evolution version image" />
                     <div>${evolvedPokemon}</div>`
                 )
-
                 evolutionsList.append(div);
             }
-            // console.log(evolutionsData.chain.species.name); /* First Evolution */
-            // console.log(evolutionsData.chain.evolves_to[0].species.name); /* Second Evolution */
-            // console.log(evolutionsData.chain.evolves_to[0].evolves_to[0].species.name); /* Third Evolution */
+
             // Evolutions
+
             
             if(shouldAddToRecent){
                 let recentList = document.querySelector("#recent-list");
@@ -253,32 +250,21 @@ clearTeamButton.addEventListener("click", ()=>{
     }
 });
 
-
-/* Event listener that triggers every time you type in selector */
 let filterSelect = document.querySelector("#filter-select");
 filterSelect.addEventListener("input", (e)=>{
-    /* When selecting a pokemon, you want the others gone. So we want to delete the children of `pokemonSelect` */
-    /* Store a value first, then erase it. Go through each option, erase all of them, and append only the ones that you want/that are true. */
-    // console.log(e.target.value);
     let pokemonSelect = document.querySelector("#pokemon-select");
-
-    /* create an empty array to store them */
     let filteredArr = [];
-    /* go through every option, one at a time */
-    for (let option of allPokemonOptions){
-        /* Do you have what I'm typing? It will look for the string values in each option every time */
-        if (option.value.includes(e.target.value)){
+    for(let option of allPokemonOptions){
+        if(option.value.includes(e.target.value)){
             filteredArr.push(option);
         }
     }
 
-    /* Remove children like we did before, to erase it */
     while (pokemonSelect.firstChild) {
-        pokemonSelect.removeChild(pokemonSelect.firstChild);
+            pokemonSelect.removeChild(pokemonSelect.firstChild);
     }
-    
-    /* Add the ones back in that we want */
-    for (let option of filteredArr){
+
+    for(let option of filteredArr){
         pokemonSelect.append(option);
     }
 })
