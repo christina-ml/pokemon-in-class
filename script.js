@@ -90,19 +90,16 @@ async function fetchPokemonDetails(pokemonName, shouldAddToRecent){
                 if (chain.evolves_to.length < 1) {
                     break;
                 }
-                chain = chain.evolves_to[0];
+                chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
                 evolutionChain.push(chain.species.name);
+                
+                // for (let i = 0; i < chain.evolves_to.length; i++){
+                //     chain = chain.evolves_to[i]; // Reset `chain` to the next evolution
+                //     evolutionChain.push(chain.species.name);
+                // }
             }
 
             console.log(evolutionChain);
-
-            // while(true){
-            //     if (chain.evolves_to.length < 1) {
-            //         break;
-            //     }
-            //     chain = chain.evolves_to[0]; // Reset `chain` to the next evolution
-            //     evolutionChain.push(chain.species.name);
-            // }
 
             // let evolutionsList = document.querySelector("#evolutions-list");
             // for(let evolvedPokemon of evolutionChain){
