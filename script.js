@@ -31,9 +31,9 @@ Do a forEach to grab each letter. And put a span for each letter. */
         // span.style.top = "50px";
 
         /* Adding the keyframe animation from CSS */
-        span.style.animation = "moveElement 1s infinite, spinElement 1s infinite";
+        span.style.animation = "moveElement 1s infinite, spinElement 1s infinite, colorElement 2s infinite";
 
-    }, 500 * index);
+    }, 300 * index);
 });
 
 

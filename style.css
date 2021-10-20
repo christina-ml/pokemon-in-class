@@ -177,3 +177,13 @@ ul#team-list img{
         transform: rotate(360deg);
     }
 }
+
+/* Changing the colors of the elements
+- Going from red to blue
+- Rotate in/out of those colors
+*/
+@keyframes colorElement {
+    0% {color: rgb(255, 0, 0);}
+    50% {color: rgb(0, 0, 255);}
+    100% {color: rgb(255, 0, 0);}
+}
