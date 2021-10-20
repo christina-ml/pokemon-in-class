@@ -9,17 +9,31 @@ gives an array of letters, including the space.
 Do a forEach to grab each letter. And put a span for each letter. */
 "Poké Teams".split("").forEach((letter, index)=>{
     let span = document.createElement("span");
+
+    /* There's still a space in the word */
+    if (letter === " "){
+        return;
+    }
+
     span.textContent = letter;
 
     /* Attach CSS styling to it before appending. Each element has a 1s transition */
     span.style.transition = "0.5s";
-    span.style.opacity = 0;
+    // span.style.opacity = 0;
+    span.style.position = "relative";
+    span.style.display = "inline-block"; // ROTATE only works on inline-blocks
+    // span.style.top = 0;
 
     title.append(span);
 
     setTimeout(()=>{
-        span.style.opacity = 1;
-    }, 1000 * index);
+        // span.style.opacity = 1;
+        // span.style.top = "50px";
+
+        /* Adding the keyframe animation from CSS */
+        span.style.animation = "moveElement 1s infinite, spinElement 1s infinite";
+
+    }, 500 * index);
 });
 
 

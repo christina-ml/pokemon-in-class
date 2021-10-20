@@ -155,3 +155,25 @@ ul#team-list img{
 #recent{
     grid-area: recent;
 }
+
+
+/*
+- Control how it eases into the animation.
+- Going to make a perpetual animation
+*/
+@keyframes moveElement {
+    0% {top: 0px}
+    25% {top: 50px}
+    50% {top: 0px}
+    75% {top: 0px}
+    100% {top: 0px}
+}
+
+@keyframes spinElement {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
