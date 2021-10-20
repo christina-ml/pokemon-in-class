@@ -3,14 +3,29 @@ function capitalize(str){
 }
 
 
-// #header h1:hover {
-//     opacity: 0.25;    
-// }
+let title = document.querySelector("#header");
+/* Split each letter to rotate each letter individually
+gives an array of letters, including the space.
+Do a forEach to grab each letter. And put a span for each letter. */
+"Poké Teams".split("").forEach((letter, index)=>{
+    let span = document.createElement("span");
+    span.textContent = letter;
 
-let h1 = document.querySelector("#header h1");
+    /* Attach CSS styling to it before appending. Each element has a 1s transition */
+    span.style.transition = "0.5s";
+    span.style.opacity = 0;
+
+    title.append(span);
+
+    setTimeout(()=>{
+        span.style.opacity = 1;
+    }, 1000 * index);
+});
+
+
 // h1.style.opacity = 0;
 // h1.style.transform = "rotate(0deg)";
-h1.style.transition = "5s";
+// h1.style.transition = "5s";
 
 setTimeout(()=>{
     // h1.style.transform = "rotate(360deg)";
