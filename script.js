@@ -9,15 +9,11 @@ function capitalize(str){
 
 let h1 = document.querySelector("#header h1");
 // h1.style.opacity = 0;
-h1.style.transform = "rotate(0deg)";
-
-h1.style.transition = "1s";
+// h1.style.transform = "rotate(0deg)";
+h1.style.transition = "5s";
 
 setTimeout(()=>{
-    let h1 = document.querySelector("#header h1");
-
-    h1.style.transform = "rotate(360deg)";
-
+    // h1.style.transform = "rotate(360deg)";
     // h1.style.opacity = 1;
 }, 1000);
 
